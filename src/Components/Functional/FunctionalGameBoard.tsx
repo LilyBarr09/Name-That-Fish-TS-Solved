@@ -19,8 +19,7 @@ export function FunctionalGameBoard({
 
   const submitForm = (e: FormEvent) => {
     e.preventDefault();
-    fishGuess;
-    console.log(fishGuess);
+    fishGuess(usersInput);
     setUsersInput("");
   };
   return (
