@@ -1,23 +1,26 @@
 import "./styles/game-board.css";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 interface Props {
-  initialFishes: [{ name: string; url: string }];
-  fishGuess();
+  initialFishes: { name: string; url: string }[];
+  fishGuess: (guess: string) => void;
   fishIndex: number;
 }
 
-export function FunctionalGameBoard(props: Props) {
+export function FunctionalGameBoard({
+  initialFishes,
+  fishGuess,
+  fishIndex,
+}: Props) {
   const [usersInput, setUsersInput] = useState("");
 
   const nextFishToName =
-    props.initialFishes[
-      props.fishIndex !== props.initialFishes.length ? props.fishIndex : 0
-    ];
+    initialFishes[fishIndex !== initialFishes.length ? fishIndex : 0];
 
-  const submitForm = (e: React.FormEvent<EventTarget>): void => {
+  const submitForm = (e: FormEvent) => {
     e.preventDefault();
-    props.fishGuess();
+    fishGuess;
+    console.log(fishGuess);
     setUsersInput("");
   };
   return (

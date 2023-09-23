@@ -4,12 +4,7 @@ import { FunctionalFinalScore } from "./FunctionalFinalScore";
 import { Images } from "../../assets/Images";
 import { useState } from "react";
 
-type Fishes = {
-  name: string;
-  url: string;
-};
-
-const initialFishes: Fishes[] = [
+const initialFishes = [
   {
     name: "trout",
     url: Images.trout,
@@ -29,12 +24,12 @@ const initialFishes: Fishes[] = [
 ];
 
 export function FunctionalApp() {
-  const [correctTally, setCorrectTally] = useState<number>(0);
-  const [incorrectTally, setIncorrectTally] = useState<number>(0);
+  const [correctTally, setCorrectTally] = useState(0);
+  const [incorrectTally, setIncorrectTally] = useState(0);
 
   const fishIndex: number = correctTally + incorrectTally;
 
-  const fishGuess = (guess: string): void => {
+  const fishGuess = (guess: string) => {
     if (guess === initialFishes[fishIndex].name) {
       setCorrectTally(correctTally + 1);
     } else {
@@ -56,7 +51,7 @@ export function FunctionalApp() {
             answers={answersLeft}
           />
           <FunctionalGameBoard
-            initialFishes={initialFishes} //*why is there an error here
+            initialFishes={initialFishes}
             fishGuess={fishGuess} //*why is there an error here
             fishIndex={fishIndex}
           />
